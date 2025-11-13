@@ -1,19 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import MainScreen from './screens/MainScreen';
-
-// 1. Redux Provider와 Store 임포트 (경로를 확인하세요!)
+import LoginScreen from './screens/LoginScreen';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
+
   return (
-    // 2. Provider로 앱을 감싸고 store 전달
-    <Provider store={store}> 
-      <View style={styles.container}>
-        <MainScreen></MainScreen>
-        <StatusBar style="auto" />
-      </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen options={{ headerShown: false }} name="Main" component={MainScreen} />
+          <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }

@@ -3,9 +3,7 @@ import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import InputForm from '../components/InputForm'
 import TodoItem from '../components/TodoItem'
-// Redux에서 데이터를 가져오기 위한 훅 추가 (나중에 사용)
 import { useSelector } from 'react-redux'; 
-import { store } from '../redux/store'
 
 const MainScreen = () => {
   // Redux Store에서 todos를 가져옵니다.
@@ -56,7 +54,7 @@ const MainScreen = () => {
   )
 }
 
-export default MainScreen
+export default MainScreen;
 
 const styles = StyleSheet.create({
     container:{
